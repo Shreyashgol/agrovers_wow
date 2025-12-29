@@ -2,6 +2,8 @@
 
 Deploy both backend (Python FastAPI) and frontend (React + Vite) to Vercel in 10 minutes.
 
+> **⚠️ Important Note**: Due to Vercel's memory limitations, the RAG engine (knowledge base search) will be disabled. The app will still work with LLM-based responses. For full RAG support, use Render deployment (see `DEPLOY.md`).
+
 ## Prerequisites
 
 1. **GitHub account** with your code pushed
@@ -10,17 +12,47 @@ Deploy both backend (Python FastAPI) and frontend (React + Vite) to Vercel in 10
    - **Groq**: [console.groq.com/keys](https://console.groq.com/keys)
    - **Gemini**: [makersuite.google.com/app/apikey](https://makersuite.google.com/app/apikey)
 
+### ⚠️ Important: Vercel Memory Limitations
+
+Vercel's free tier has memory constraints that prevent using heavy ML libraries like `sentence-transformers` and `faiss-cpu`. 
+
+**Two deployment options:**
+
+**Option A: Vercel (Lightweight - No RAG)**
+- ✅ Fast deployment
+- ✅ Free tier friendly
+- ❌ No knowledge base search (RAG disabled)
+- ✅ LLM still provides helpful responses
+
+**Option B: Render (Full Features)**
+- ✅ Full RAG with knowledge base
+- ✅ All features enabled
+- ⏱️ Slower cold starts
+- See `DEPLOY.md` for Render deployment
+
+**For Vercel deployment, continue below:**
+
 ---
 
 ## Method 1: Deploy via Vercel Dashboard (Recommended)
 
 ### Step 1: Push to GitHub
 
+**First, prepare backend for Vercel:**
+
 ```bash
-cd agrovers_wow
-git init
+cd agrovers_wow/backend
+./prepare-vercel.sh
+cd ..
+```
+
+This switches to lightweight dependencies (removes heavy ML libraries).
+
+**Then push to GitHub:**
+
+```bash
 git add .
-git commit -m "Ready for deployment"
+git commit -m "Prepare for Vercel deployment"
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git push -u origin main
@@ -172,6 +204,13 @@ Follow the interactive prompts to deploy both backend and frontend.
 
 ### Backend Build Fails
 
+**Error**: "Out of Memory" (OOM) during build
+
+**Solution**:
+1. Run `./backend/prepare-vercel.sh` to use lightweight dependencies
+2. Commit and push changes
+3. Redeploy on Vercel
+
 **Error**: "Function Runtimes must have a valid version" or "Module not found"
 
 **Solution**:
@@ -195,10 +234,15 @@ Follow the interactive prompts to deploy both backend and frontend.
 
 **Error**: `"rag_ready": false` in health check
 
-**Solution**:
-- Ensure knowledge base files are in `backend/app/data/kb_raw/`
-- Check if preprocessing ran during build
-- Verify FAISS index was created
+**This is expected on Vercel!** The RAG engine (knowledge base search) is disabled due to memory constraints.
+
+**What still works:**
+- ✅ LLM-based helper responses
+- ✅ Form submission
+- ✅ Report generation
+- ✅ All core functionality
+
+**For full RAG support**, deploy to Render instead (see `DEPLOY.md`).
 
 ### Function Timeout
 

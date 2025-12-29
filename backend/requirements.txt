@@ -1,30 +1,29 @@
+# Vercel-optimized requirements (lightweight)
+# Heavy ML dependencies removed - use API-based embeddings instead
+
 # Core Web Framework
 fastapi==0.104.1
-uvicorn[standard]==0.24.0
+uvicorn==0.24.0
 pydantic>=2.5.0
 pydantic-settings>=2.1.0
-gunicorn>=21.0.0
 
 # HTTP & File Handling
 python-multipart>=0.0.6
 httpx==0.25.2
 requests==2.31.0
 
-# LangChain & LLM Integration
+# LLM Integration (API-based only)
 langchain-core>=0.1.0
 langchain-groq>=0.0.1
 langchain-google-genai>=0.0.5
 groq>=0.4.0
 google-generativeai>=0.8.0
 
-# RAG & Embeddings (Optimized for Render)
-sentence-transformers>=2.7.0
-faiss-cpu>=1.7.4
+# Lightweight alternatives
 numpy>=1.24.3,<2.0.0
 
-# Voice Services (TTS only - removed Whisper)
+# Voice Services (TTS only)
 gtts>=2.5.0
-pydub>=0.25.1
 
 # PDF Generation
 reportlab>=4.0.0

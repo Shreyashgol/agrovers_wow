@@ -62,22 +62,30 @@ async def startup_event():
     Initialize services on application startup.
     
     Loads:
-    - RAG engine (FAISS index + embedding model)
+    - RAG engine (FAISS index + embedding model) - Optional on Vercel
+    - LLM adapter
 
     """
     global rag_engine, llm_adapter
     
     print("🚀 Starting Argovers Soil Assistant...")
     
-    # Initialize RAG engine
+    # Initialize RAG engine (optional - may not work on Vercel due to memory constraints)
     try:
-        rag_engine = RAGEngine()
-        sessions.set_rag_engine(rag_engine)
-        print("✓ RAG engine ready")
+        # Check if we're running on Vercel (serverless environment)
+        import os
+        is_vercel = os.getenv('VERCEL') == '1' or os.getenv('VERCEL_ENV') is not None
+        
+        if is_vercel:
+            print("⚠️  Running on Vercel - RAG engine disabled (use LLM-only mode)")
+            rag_engine = None
+        else:
+            rag_engine = RAGEngine()
+            sessions.set_rag_engine(rag_engine)
+            print("✓ RAG engine ready")
     except Exception as e:
         print(f"⚠ Warning: RAG engine initialization failed: {e}")
-        print("  Helper mode will not work until index is built.")
-        # Create a dummy engine that returns empty results
+        print("  Helper mode will work with LLM-only (no knowledge base)")
         rag_engine = None
     
     # Initialize LLM adapter
