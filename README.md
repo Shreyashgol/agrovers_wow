@@ -181,24 +181,25 @@ npm run dev
 
 ## Deployment
 
-### 🚀 Deploy to Vercel (Recommended - 10 minutes)
+### 🚀 Recommended: Hybrid Deployment
 
-Complete guide: **[VERCEL_DEPLOY.md](VERCEL_DEPLOY.md)**
+**Best practice: Backend on Render + Frontend on Vercel**
 
-Quick steps:
-1. Get API keys (Groq + Gemini)
-2. Deploy backend to Vercel
-3. Deploy frontend to Vercel
+Complete guide: **[RENDER_DEPLOY.md](RENDER_DEPLOY.md)**
+
+**Why this setup?**
+- ✅ Backend on Render: Full ML support, RAG works perfectly
+- ✅ Frontend on Vercel: Lightning-fast CDN, instant deploys
+- ✅ Both free tiers available
+- ✅ Auto-deploy on git push
+
+**Quick steps:**
+1. Push code to GitHub
+2. Deploy backend to Render (with API keys)
+3. Deploy frontend to Vercel (with backend URL)
 4. Update CORS and test
 
-Or use automated script:
-```bash
-./deploy-to-vercel.sh
-```
-
-### 🐳 Deploy to Render (Alternative)
-
-See `DEPLOY.md` for Render deployment instructions.
+---
 
 ## Troubleshooting
 
