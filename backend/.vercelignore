@@ -43,9 +43,5 @@ tmp/
 temp/
 *.tmp
 
-# Documentation (not needed in deployment)
-README.md
-*.md
-
 # Scripts (not needed in deployment)
 *.sh

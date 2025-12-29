@@ -172,12 +172,14 @@ Follow the interactive prompts to deploy both backend and frontend.
 
 ### Backend Build Fails
 
-**Error**: "Module not found" or dependency errors
+**Error**: "Function Runtimes must have a valid version" or "Module not found"
 
 **Solution**:
-- Verify Python version is 3.11 in Vercel settings
+- Ensure `vercel.json` uses `@vercel/python` (not a version number)
+- Verify `api/index.py` exists and exports the `app`
 - Check `requirements.txt` exists in backend directory
 - Review build logs for specific errors
+- Make sure Python 3.9+ is being used (Vercel auto-detects)
 
 ### Frontend Can't Connect to Backend
 
