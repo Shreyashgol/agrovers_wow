@@ -9,7 +9,4 @@ from pathlib import Path
 backend_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(backend_dir))
 
-from app.main import app
-
-# Vercel expects a variable named 'app' or 'handler'
-handler = app
+from app.main import app  # FastAPI instance
