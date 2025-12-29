@@ -181,22 +181,24 @@ npm run dev
 
 ## Deployment
 
-### Backend
+### 🚀 Deploy to Vercel (Recommended - 10 minutes)
 
-1. Set production environment variables
-2. Run preprocessing script
-3. Use production ASGI server:
-   ```bash
-   uvicorn app.main:app --host 0.0.0.0 --port 8000
-   ```
+Complete guide: **[VERCEL_DEPLOY.md](VERCEL_DEPLOY.md)**
 
-### Frontend
+Quick steps:
+1. Get API keys (Groq + Gemini)
+2. Deploy backend to Vercel
+3. Deploy frontend to Vercel
+4. Update CORS and test
 
-1. Build production bundle:
-   ```bash
-   npm run build
-   ```
-2. Serve `dist/` directory with Nginx/Apache/static host
+Or use automated script:
+```bash
+./deploy-to-vercel.sh
+```
+
+### 🐳 Deploy to Render (Alternative)
+
+See `DEPLOY.md` for Render deployment instructions.
 
 ## Troubleshooting
 
