@@ -48,3 +48,5 @@ Thumbs.db
 ./DEPLOYMENT_STATUS.md
 ./PROJECT_SUMMARY.md
 ./SETUP.md
+
+backend/.venv/*

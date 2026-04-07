@@ -29,7 +29,7 @@ function App() {
         <Routes>
           {/* Landing Page - Default Route */}
           <Route path="/" element={<LandingPage />} />
-          
+
           {/* Language Selection & Wizard */}
           <Route
             path="/app"
@@ -41,7 +41,7 @@ function App() {
               )
             }
           />
-          
+
           {/* Redirect any unknown routes to landing */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
