@@ -74,7 +74,7 @@ export default function Hero({ onGetStarted }: HeroProps) {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-900">2+</div>
+                <div className="text-3xl font-bold text-green-900">2</div>
                 <div className="text-sm text-green-700 mt-1">
                   States Covered
                 </div>
