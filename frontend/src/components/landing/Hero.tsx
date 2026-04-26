@@ -68,19 +68,19 @@ export default function Hero({ onGetStarted }: HeroProps) {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-900">5000+</div>
+                <div className="text-3xl font-bold text-green-900">17+</div>
                 <div className="text-sm text-green-700 mt-1">
                   Farmers Helped
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-900">12+</div>
+                <div className="text-3xl font-bold text-green-900">2+</div>
                 <div className="text-sm text-green-700 mt-1">
                   States Covered
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-900">98%</div>
+                <div className="text-3xl font-bold text-green-900">92%</div>
                 <div className="text-sm text-green-700 mt-1">Success Rate</div>
               </div>
             </div>
